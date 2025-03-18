@@ -1,0 +1,85 @@
+@import '@fortawesome/fontawesome-free/css/all.css';
+
+
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+
+.nav-item.dropdown {
+    list-style: none;
+}
+
+.custom-yellow {
+    background-color: #d4a017 !important; // Amarillo más oscuro
+    color: black !important; // Texto oscuro para contraste
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.custom-card {
+    background-color: #fff3cd; // Un amarillo suave para no saturar
+    border: 2px solid #d4a017; // Un amarillo oscuro para resaltar
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); // Sombra sutil
+}
+
+.custom-header {
+    background-color: #d4a017; // Amarillo oscuro
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.custom-title {
+    background-color: #d9b246; // Un marrón dorado que combina con amarillo
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.custom-btn {
+    background-color: #e3b84a; // Amarillo oscuro
+    border: none;
+    color: white;
+    font-size: 20px;
+    padding: 8px 12px;
+    margin: 5px;
+    border-radius: 5px;
+    transition: 0.3s;
+
+    &:hover {
+        background-color: #c2a041; // Se oscurece al pasar el mouse
+    }
+}
+
+.custom-footer {
+    background-color: #b71c1c; // Rojo oscuro
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0px -3px 10px rgba(0, 0, 0, 0.2);
+    border-top: 4px solid #d32f2f;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: fixed; /* Asegura que esté pegado abajo */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+
+
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+@import "tailwindcss";
