@@ -41,8 +41,8 @@
 
         <!-- Contenido principal -->
         <div class="flex-1 p-10">
-            <h1 class="text-3xl font-bold mb-4">Lista de Pedidos</h1>
-            <a href="{{ route('pedidos.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded mb-4 inline-block">Nuevo Pedido</a>
+            <h1 class="text-3xl font-bold mb-4">Lista de Ciudades</h1>
+            <a href="{{ route('ciudades.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded mb-4 inline-block">Nueva Ciudad</a>
 
             @if (session('success'))
                 <div class="bg-green-500 text-white p-2 mb-4">{{ session('success') }}</div>
@@ -52,26 +52,26 @@
                 <table class="w-full border-collapse">
                     <thead>
                         <tr class="bg-gray-200">
-                            <th class="p-3 text-left"># Pedido</th>
-                            <th class="p-3 text-left">Cliente</th>
+                            <th class="p-3 text-left">ID Ciudad</th>
+                            <th class="p-3 text-left">Nombre Ciudad</th>
                             <th class="p-3 text-left">Estado</th>
-                            <th class="p-3 text-left">Total</th>
+                            <th class="p-3 text-left">Código Postal</th>
                             <th class="p-3 text-left">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($pedidos as $pedido)
+                        @foreach ($ciudades as $ciudad)
                             <tr class="border-b">
-                                <td class="p-3">{{ $pedido->id_pedido }}</td>
-                                <td class="p-3">{{ $pedido->nombre_cliente ?? 'Sin nombre' }}</td>
-                                <td class="p-3 text-green-600 font-semibold">{{ $pedido->estado }}</td>
-                                <td class="p-3 text-blue-600">${{ number_format($pedido->total, 2) }} MXN</td>
+                                <td class="p-3">{{ $ciudad->id_ciudad }}</td>
+                                <td class="p-3">{{ $ciudad->nombre_ciudad }}</td>
+                                <td class="p-3">{{ $ciudad->estado }}</td>
+                                <td class="p-3">{{ $ciudad->codigo_postal }}</td>
                                 <td class="p-3">
-                                    <a href="{{ route('pedidos.edit', $pedido->id_pedido) }}" class="bg-yellow-500 text-white px-2 py-1 rounded">Editar</a>
-                                    <form action="{{ route('pedidos.destroy', $pedido->id_pedido) }}" method="POST" class="inline-block">
+                                    <a href="{{ route('ciudades.edit', $ciudad->id_ciudad) }}" class="bg-yellow-500 text-white px-2 py-1 rounded">Editar</a>
+                                    <form action="{{ route('ciudades.destroy', $ciudad->id_ciudad) }}" method="POST" class="inline-block">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded" onclick="return confirm('¿Seguro que deseas eliminar este pedido?')">Eliminar</button>
+                                        <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded" onclick="return confirm('¿Seguro que deseas eliminar esta ciudad?')">Eliminar</button>
                                     </form>
                                 </td>
                             </tr>

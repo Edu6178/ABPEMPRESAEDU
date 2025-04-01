@@ -16,6 +16,9 @@ use App\Http\Controllers\PedidoController;
 Route::resource('pedidos', PedidoController::class);
 
 
+use App\Http\Controllers\CiudadController;
+
+Route::resource('ciudades', CiudadController::class);
 
 
 
