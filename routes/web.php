@@ -11,6 +11,19 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+use App\Http\Controllers\PedidoController;
+
+Route::resource('pedidos', PedidoController::class);
+
+
+use App\Http\Controllers\CiudadController;
+
+Route::resource('ciudades', CiudadController::class);
+
+
+
+
+
 Route::get('/dashboard', function () {
     return view('home');
 })->name('dashboard');
@@ -19,9 +32,10 @@ Route::get('productos', function () {
     return view('productos');
 })->name('productos');
 
-Route::get('pedidos', function () {
-    return view('pedidos');
-})->name('pedidos');
+
+////Route::get('pedidos', function () {
+    ///return view('pedidos');
+////})->name('pedidos');
 
 Route::get('catalogo', function () {
     return view('catalogo');

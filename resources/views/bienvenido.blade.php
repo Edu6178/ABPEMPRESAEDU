@@ -35,6 +35,31 @@
     </div>
 </nav>
 
+<!-- SLIDER DE IMÁGENES -->
+<div id="carouselExample" class="carousel slide mt-4 container" data-bs-ride="carousel">
+    <div class="carousel-inner text-center" style="max-width: 900px; max-height: 450px; margin: auto;">
+        <div class="carousel-item active">
+            <img src="{{ asset('img/p_pluma.jpg') }}" class="d-block w-100" style="max-height: 450px; object-fit: contain;" alt="Plumas">
+        </div>
+        <div class="carousel-item">
+            <img src="{{ asset('img/PapelMultiusos.jpg') }}" class="d-block w-100" style="max-height: 450px; object-fit: contain;" alt="Papel Multiusos">
+        </div>
+        <div class="carousel-item">
+            <img src="{{ asset('img/p_lapices.jpg') }}" class="d-block w-100" style="max-height: 450px; object-fit: contain;" alt="Lápices">
+        </div>
+        <div class="carousel-item">
+            <img src="{{ asset('img/p_libreta.jpg') }}" class="d-block w-100" style="max-height: 450px; object-fit: contain;" alt="Libreta">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+    </button>
+</div>
 
 
 
