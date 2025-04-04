@@ -20,6 +20,9 @@ use App\Http\Controllers\CiudadController;
 
 Route::resource('ciudades', CiudadController::class);
 
+use App\Http\Controllers\EmpleadoController;
+
+Route::resource('empleados', EmpleadoController::class);
 
 
 

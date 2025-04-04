@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Pedido - Distribuidora ABC</title>
+    <title>Dashboard - Distribuidora ABC</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
@@ -41,43 +41,45 @@
 
         <!-- Contenido principal -->
         <div class="flex-1 p-10">
-            <h1 class="text-3xl font-bold mb-4">Editar Pedido</h1>
+            <h1 class="text-3xl font-bold mb-4">Lista de Empleados</h1>
+            <a href="{{ route('empleados.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded mb-4 inline-block">Nuevo Empleado</a>
 
             @if (session('success'))
                 <div class="bg-green-500 text-white p-2 mb-4">{{ session('success') }}</div>
             @endif
 
             <div class="bg-white rounded-lg p-6 shadow">
-                <form action="{{ route('pedidos.update', $pedido->id_pedido) }}" method="POST">
-                    @csrf
-                    @method('PUT')
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="mb-4">
-                            <label for="nombre_cliente" class="block text-sm font-semibold text-gray-700">Nombre del Cliente</label>
-                            <input type="text" name="nombre_cliente" id="nombre_cliente" value="{{ $pedido->nombre_cliente }}" class="w-full p-3 mt-1 border border-gray-300 rounded-lg" required>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="total" class="block text-sm font-semibold text-gray-700">Total</label>
-                            <input type="number" step="0.01" name="total" id="total" value="{{ $pedido->total }}" class="w-full p-3 mt-1 border border-gray-300 rounded-lg" required>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="estado" class="block text-sm font-semibold text-gray-700">Estado</label>
-                            <select name="estado" id="estado" class="w-full p-3 mt-1 border border-gray-300 rounded-lg" required>
-                                <option value="Pendiente" {{ $pedido->estado == 'Pendiente' ? 'selected' : '' }}>Pendiente</option>
-                                <option value="En proceso" {{ $pedido->estado == 'En proceso' ? 'selected' : '' }}>En proceso</option>
-                                <option value="Entregado" {{ $pedido->estado == 'Entregado' ? 'selected' : '' }}>Entregado</option>
-                                <option value="Cancelado" {{ $pedido->estado == 'Cancelado' ? 'selected' : '' }}>Cancelado</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="mt-4">
-                        <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded-lg">Actualizar Pedido</button>
-                    </div>
-                </form>
+                <table class="w-full border-collapse">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="p-3 text-left">ID Empleado</th>
+                            <th class="p-3 text-left">Nombre Completo</th>
+                            <th class="p-3 text-left">Puesto</th>
+                            <th class="p-3 text-left">Salario</th>
+                            <th class="p-3 text-left">Fecha Contratación</th>
+                            <th class="p-3 text-left">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($empleados as $empleado)
+                            <tr class="border-b">
+                                <td class="p-3">{{ $empleado->id_empleado }}</td>
+                                <td class="p-3">{{ $empleado->nombre_empleado }}</td>
+                                <td class="p-3">{{ $empleado->puesto }}</td>
+                                <td class="p-3">${{ number_format($empleado->salario, 2) }}</td>
+                                <td class="p-3">{{ $empleado->fecha_contratacion }}</td>
+                                <td class="p-3">
+                                    <a href="{{ route('empleados.edit', $empleado->id_empleado) }}" class="bg-yellow-500 text-white px-2 py-1 rounded">Editar</a>
+                                    <form action="{{ route('empleados.destroy', $empleado->id_empleado) }}" method="POST" class="inline-block">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded" onclick="return confirm('¿Seguro que deseas eliminar este empleado?')">Eliminar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
 

@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Pedido - Distribuidora ABC</title>
+    <title>Editar Empleado - Distribuidora ABC</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
@@ -41,41 +41,40 @@
 
         <!-- Contenido principal -->
         <div class="flex-1 p-10">
-            <h1 class="text-3xl font-bold mb-4">Editar Pedido</h1>
+            <h1 class="text-3xl font-bold mb-4">Editar Empleado</h1>
 
             @if (session('success'))
                 <div class="bg-green-500 text-white p-2 mb-4">{{ session('success') }}</div>
             @endif
 
             <div class="bg-white rounded-lg p-6 shadow">
-                <form action="{{ route('pedidos.update', $pedido->id_pedido) }}" method="POST">
+                <form action="{{ route('empleados.update', $empleado->id_empleado) }}" method="POST">
                     @csrf
                     @method('PUT')
-                    
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="mb-4">
-                            <label for="nombre_cliente" class="block text-sm font-semibold text-gray-700">Nombre del Cliente</label>
-                            <input type="text" name="nombre_cliente" id="nombre_cliente" value="{{ $pedido->nombre_cliente }}" class="w-full p-3 mt-1 border border-gray-300 rounded-lg" required>
+                            <label for="nombre_empleado" class="block text-sm font-semibold text-gray-700">Nombre</label>
+                            <input type="text" name="nombre_empleado" id="nombre_empleado" value="{{ $empleado->nombre_empleado }}" class="w-full p-3 mt-1 border border-gray-300 rounded-lg" required>
                         </div>
 
                         <div class="mb-4">
-                            <label for="total" class="block text-sm font-semibold text-gray-700">Total</label>
-                            <input type="number" step="0.01" name="total" id="total" value="{{ $pedido->total }}" class="w-full p-3 mt-1 border border-gray-300 rounded-lg" required>
+                            <label for="puesto" class="block text-sm font-semibold text-gray-700">Puesto</label>
+                            <input type="text" name="puesto" id="puesto" value="{{ $empleado->puesto }}" class="w-full p-3 mt-1 border border-gray-300 rounded-lg" required>
                         </div>
 
                         <div class="mb-4">
-                            <label for="estado" class="block text-sm font-semibold text-gray-700">Estado</label>
-                            <select name="estado" id="estado" class="w-full p-3 mt-1 border border-gray-300 rounded-lg" required>
-                                <option value="Pendiente" {{ $pedido->estado == 'Pendiente' ? 'selected' : '' }}>Pendiente</option>
-                                <option value="En proceso" {{ $pedido->estado == 'En proceso' ? 'selected' : '' }}>En proceso</option>
-                                <option value="Entregado" {{ $pedido->estado == 'Entregado' ? 'selected' : '' }}>Entregado</option>
-                                <option value="Cancelado" {{ $pedido->estado == 'Cancelado' ? 'selected' : '' }}>Cancelado</option>
-                            </select>
+                            <label for="salario" class="block text-sm font-semibold text-gray-700">Salario</label>
+                            <input type="number" step="0.01" name="salario" id="salario" value="{{ $empleado->salario }}" class="w-full p-3 mt-1 border border-gray-300 rounded-lg" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="fecha_contratacion" class="block text-sm font-semibold text-gray-700">Fecha de Contratación</label>
+                            <input type="date" name="fecha_contratacion" id="fecha_contratacion" value="{{ $empleado->fecha_contratacion }}" class="w-full p-3 mt-1 border border-gray-300 rounded-lg" required>
                         </div>
                     </div>
 
                     <div class="mt-4">
-                        <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded-lg">Actualizar Pedido</button>
+                        <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded-lg">Actualizar Empleado</button>
                     </div>
                 </form>
             </div>

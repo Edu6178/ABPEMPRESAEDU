@@ -71,6 +71,8 @@ class PedidoController extends Controller
         $pedido = Pedido::findOrFail($id);
         $pedido->delete();
 
+        \DB::statement('ALTER TABLE pedidos AUTO_INCREMENT = 1');
+
         return redirect()->route('pedidos.index')->with('success', 'Pedido eliminado correctamente');
     }
 }
