@@ -73,7 +73,7 @@
                                     <form action="{{ route('empleados.destroy', $empleado->id_empleado) }}" method="POST" class="inline-block">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded" onclick="return confirm('¿Seguro que deseas eliminar este empleado?')">Eliminar</button>
+                                        <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded" >Eliminar</button>
                                     </form>
                                 </td>
                             </tr>

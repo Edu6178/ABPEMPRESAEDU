@@ -73,7 +73,7 @@
                                     <form action="{{ route('pedidos.destroy', $pedido->id_pedido) }}" method="POST" class="inline-block">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded" onclick="return confirm('¿Seguro que deseas eliminar este pedido?')">Eliminar</button>
+                                        <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded" >Eliminar</button>
                                     </form>
                                 </td>
                             </tr>
