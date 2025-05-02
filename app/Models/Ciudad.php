@@ -14,4 +14,10 @@ class Ciudad extends Model
     public $timestamps = true;
 
     protected $fillable = ['nombre_ciudad', 'estado', 'codigo_postal'];
+
+    // Relación: una ciudad tiene muchos pedidos
+    public function pedidos()
+    {
+        return $this->hasMany(Pedido::class, 'id_ciudad', 'id_ciudad');
+    }
 }

@@ -15,6 +15,11 @@ class Pedido extends Model
 
     public $timestamps = true;
 
-    protected $fillable = ['nombre_cliente', 'fecha_pedido', 'total', 'estado'];
+    // Asegúrate de incluir 'id_ciudad' aquí
+    protected $fillable = ['nombre_cliente', 'fecha_pedido', 'total', 'estado', 'id_ciudad'];
 
+    public function ciudad()
+    {
+        return $this->belongsTo(Ciudad::class, 'id_ciudad', 'id_ciudad');
+    }
 }

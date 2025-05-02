@@ -4,13 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Pedido;
 use Illuminate\Http\Request;
+use App\Models\Ciudad;  // Asegúrate de importar el modelo Ciudad
 
 class PedidoController extends Controller
 {
     // Mostrar la lista de pedidos
     public function index()
     {
-        $pedidos = Pedido::all(); // Obtener todos los pedidos
+        // Obtener todos los pedidos junto con el nombre de la ciudad
+        $pedidos = Pedido::leftJoin('ciudades', 'pedidos.id_ciudad', '=', 'ciudades.id_ciudad')
+                ->select('pedidos.*', 'ciudades.nombre_ciudad')
+                ->get();
+
+
+        // Pasamos los pedidos a la vista
         return view('pedidos.index', compact('pedidos'));
     }
 
@@ -33,6 +40,8 @@ class PedidoController extends Controller
             'nombre_cliente' => $request->nombre_cliente,
             'estado' => $request->estado,
             'total' => $request->total,
+            // Asegúrate de incluir 'id_ciudad' si lo necesitas en este formulario
+            'id_ciudad' => $request->id_ciudad,
         ]);
     
         // Redireccionar a la lista de pedidos con un mensaje de éxito
@@ -60,6 +69,8 @@ class PedidoController extends Controller
             'nombre_cliente' => $request->nombre_cliente,
             'estado' => $request->estado,
             'total' => $request->total,
+            // Asegúrate de actualizar 'id_ciudad' si lo necesitas
+            'id_ciudad' => $request->id_ciudad,
         ]);
 
         return redirect()->route('pedidos.index')->with('success', 'Pedido actualizado correctamente');

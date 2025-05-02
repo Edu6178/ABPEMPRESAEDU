@@ -28,8 +28,6 @@
                 <li><a href="{{ url('perfil') }}" class="block py-2 px-4 rounded hover:bg-yellow-700 {{ request()->routeIs('perfil') ? 'active_custom' : '' }}"><i class="fa-solid fa-user"></i> Perfil</a></li>
                 <li><a href="{{ route('ciudades.index') }}" class="block py-2 px-4 rounded hover:bg-yellow-700 {{ request()->routeIs('ciudades.*') ? 'active_custom' : '' }}"><i class="fas fa-city mr-2"></i> Ciudades</a></li>
                 <li><a href="{{ url('empleados') }}" class="block py-2 px-4 rounded hover:bg-yellow-700 {{ request()->is('empleados*') ? 'active_custom' : '' }}"> <i class="fas fa-users mr-2"></i> Empleados</a></li>
-
-
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
@@ -56,6 +54,7 @@
                         <tr class="bg-gray-200">
                             <th class="p-3 text-left"># Pedido</th>
                             <th class="p-3 text-left">Cliente</th>
+                            <th class="p-3 text-left">Ciudad</th> <!-- Columna para ciudad -->
                             <th class="p-3 text-left">Estado</th>
                             <th class="p-3 text-left">Total</th>
                             <th class="p-3 text-left">Acciones</th>
@@ -66,6 +65,7 @@
                             <tr class="border-b">
                                 <td class="p-3">{{ $pedido->id_pedido }}</td>
                                 <td class="p-3">{{ $pedido->nombre_cliente ?? 'Sin nombre' }}</td>
+                                <td class="p-3">{{ $pedido->nombre_ciudad ?? 'Sin ciudad' }}</td> <!-- Mostrar ciudad -->
                                 <td class="p-3 text-green-600 font-semibold">{{ $pedido->estado }}</td>
                                 <td class="p-3 text-blue-600">${{ number_format($pedido->total, 2) }} MXN</td>
                                 <td class="p-3">
