@@ -51,17 +51,46 @@
 
             <!-- Tarjeta de perfil -->
             <div class="bg-white rounded-lg p-6 shadow">
-                <div class="flex items-center space-x-4">
-                <i class="fa-solid fa-user"></i>
-                    <div>
-                        <h2 class="text-2xl font-semibold text-gray-800">{{ Auth::user()->name }}</h2>
-                        <p class="text-gray-600">{{ Auth::user()->email }}</p>
-                        <p class="text-gray-600">Miembro desde: {{ Auth::user()->created_at->format('d/m/Y') }}</p>
-                    </div>
-                </div>
-            </div>
+    <div class="flex items-center space-x-6 mb-6">
+    @if(Auth::user()->foto)
+    <img src="{{ asset('storage/' . Auth::user()->foto) }}" alt="Foto de perfil" class="w-24 h-24 rounded-full object-cover">
+@else
+    <i class="fa-solid fa-user text-5xl text-gray-400"></i>
+@endif
+        <div>
+            <h2 class="text-xl font-semibold">{{ Auth::user()->name }}</h2>
+            <p class="text-gray-500">{{ Auth::user()->email }}</p>
+            <p class="text-gray-500">{{ Auth::user()->telefono }}</p>
+            <p class="text-gray-500">{{ Auth::user()->direccion }}</p>
         </div>
+    </div>
+    <h3 class="text-lg font-semibold mb-4">Actualizar Información</h3>
+    <p class="text-gray-600 mb-4">Puedes actualizar tu nombre y foto de perfil aquí.</p>
 
+        <form method="POST" action="{{ route('perfil.update') }}" enctype="multipart/form-data" class="space-y-4">
+            @csrf
+            @method('PUT')
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Nombre</label>
+                <input type="text" name="name" value="{{ Auth::user()->name }}" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" required>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Foto de perfil</label>
+                <input type="file" name="foto" class="mt-1 block w-full text-sm text-gray-600">
+            </div>
+
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Actualizar</button>
+        </form>
+    </div>
+
+    @if (session('success'))
+        <div class="text-green-600 font-semibold">
+            {{ session('success') }}
+        </div>
+    @endif
+</div>
     </div> <!-- Fin de la caja -->
     <footer class="custom-footer">
     <p>© 2024 ABC Corp. Todos los derechos reservados.</p>

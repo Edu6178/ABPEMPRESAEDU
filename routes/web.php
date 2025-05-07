@@ -24,6 +24,9 @@ use App\Http\Controllers\EmpleadoController;
 
 Route::resource('empleados', EmpleadoController::class);
 
+Route::put('/perfil', [\App\Http\Controllers\PerfilController::class, 'update'])->name('perfil.update');
+
+
 
 
 
@@ -31,9 +34,12 @@ Route::get('/dashboard', function () {
     return view('home');
 })->name('dashboard');
 
-Route::get('productos', function () {
-    return view('productos');
-})->name('productos');
+use App\Http\Controllers\ProductoController;
+
+Route::resource('productos', ProductoController::class);  // Ruta de recurso para productos
+
+Route::get('productos/{producto}/edit', [ProductoController::class, 'edit'])->name('productos.edit');
+Route::put('productos/{producto}', [ProductoController::class, 'update'])->name('productos.update');
 
 
 ////Route::get('pedidos', function () {
@@ -60,6 +66,7 @@ Route::post('register', [RegisterController::class, 'register']);
 
 
 
+
 Route::post('/logout', function () {
     Auth::logout();
     return redirect('/');
@@ -72,9 +79,3 @@ Route::get('/', function () {
     return view('bienvenido');
 })->name('bienvenido');
 
-Route::get('productos', function () {
-    if (!Auth::check()) {
-        return redirect()->route('bienvenido'); // Redirige si no está autenticado
-    }
-    return view('productos');
-})->name('productos');
