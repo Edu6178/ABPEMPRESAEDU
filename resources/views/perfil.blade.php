@@ -8,16 +8,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Perfil</title>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 font-sans">
 
     <!-- Contenedor principal -->
     <div class="text-bg-danger p-3 pt-4 w-100 position-absolute top-0 start-0"></div>
 
     <div class="min-h-screen flex">
-        
+
         <!-- Barra lateral (Sidebar) -->
         <div class="w-80 bg-yellow-500 text-white p-10 space-y-6 flex flex-col min-h-screen">
             <!-- Título de la barra lateral -->
@@ -77,8 +77,18 @@
             </div>
 
             <div>
-                <label class="block text-sm font-medium text-gray-700">Foto de perfil</label>
-                <input type="file" name="foto" class="mt-1 block w-full text-sm text-gray-600">
+                <label for="foto" class="block text-sm font-medium text-gray-700">Foto de perfil</label>
+                <input
+                    type="file"
+                    name="foto"
+                    id="foto" {{-- Es buena práctica añadir un ID y vincularlo con el label --}}
+                    class="mt-1 block w-full text-sm text-gray-500
+               file:mr-4 file:py-2 file:px-4
+               file:rounded-lg file:border-0
+               file:text-sm file:font-semibold
+               file:bg-blue-500 file:text-white
+               hover:file:bg-blue-600
+               file:cursor-pointer ">
             </div>
 
             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Actualizar</button>

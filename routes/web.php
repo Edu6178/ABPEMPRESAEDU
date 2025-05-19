@@ -46,9 +46,16 @@ Route::put('productos/{producto}', [ProductoController::class, 'update'])->name(
     ///return view('pedidos');
 ////})->name('pedidos');
 
-Route::get('catalogo', function () {
-    return view('catalogo');
-})->name('catalogo');
+// ... otros 'use' ...
+
+use App\Http\Controllers\CatalogoController; // Asegúrate que esta línea exista
+
+// ... resto de tus rutas ...
+
+// Ruta para el Catálogo
+Route::get('catalogo', [CatalogoController::class, 'index'])->name('catalogo');
+
+// ... resto de tus rutas ...
 
 Route::get('perfil', function () {
     return view('perfil');

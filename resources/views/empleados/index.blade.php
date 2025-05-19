@@ -10,13 +10,13 @@
     <title>Dashboard - Distribuidora ABC</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 font-sans">
 
     <!-- Contenedor principal -->
     <div class="text-bg-danger p-3 pt-4 w-100 position-absolute top-0 start-0"></div>
 
     <div class="min-h-screen flex">
-        
+
         <!-- Barra lateral (Sidebar) -->
         <div class="w-80 bg-yellow-500 text-white p-10 space-y-6 flex flex-col min-h-screen">
             <h1 class="text-2xl font-bold text-center">Distribuidora ABC</h1>

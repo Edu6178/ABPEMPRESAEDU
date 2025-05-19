@@ -7,16 +7,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Distribuidora ABC</title>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 font-sans">
 
     <!-- Contenedor principal -->
     <div class="text-bg-danger p-3 pt-4 w-100 position-absolute top-0 start-0 " ></div>
 
     <div class="min-h-screen flex">
-        
+
         <!-- Barra lateral (Sidebar) -->
         <div class="w-80 bg-yellow-500 text-white p-10 space-y-6">
             <!-- Título de la barra lateral -->
@@ -30,8 +30,8 @@
                 <li><a href="{{url('perfil')}}" class="block py-2 px-4 rounded hover:bg-yellow-700 {{request()->routeIs('catalogo') ? 'active_custom' : ''}}"><i class="fa-solid fa-user"></i> Perfil</a></li>
                 <li><a href="{{ route('ciudades.index') }}" class="block py-2 px-4 rounded hover:bg-yellow-700 {{ request()->routeIs('ciudades.*') ? 'active_custom' : '' }}"><i class="fas fa-city mr-2"></i> Ciudades</a></li>
                 <li><a href="{{ url('empleados') }}" class="block py-2 px-4 rounded hover:bg-yellow-700 {{ request()->is('empleados*') ? 'active_custom' : '' }}"> <i class="fas fa-users mr-2"></i> Empleados</a></li>
-                
-                
+
+
 
                 <!-- Formulario de salirte (NO TOCAr) -->
                 <li>
@@ -73,7 +73,7 @@
                     <p class="mt-4 text-2xl font-bold text-yellow-600">15,200 MXN</p>
                     <i class="fas fa-shopping-cart text-yellow-500 text-4xl mt-4"></i>
                 </div>
-                
+
 
 <div class="card" style="width: 18rem;">
 <img src="{{ asset('img/cupon.png') }}" class="card-img-top " alt="...">
