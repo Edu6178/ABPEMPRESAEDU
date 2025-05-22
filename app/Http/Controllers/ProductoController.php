@@ -72,6 +72,9 @@ class ProductoController extends Controller
      * @param  \App\Models\Producto  $producto
      * @return \Illuminate\View\View
      */
+
+   // mostrar la descripcion de los productos al hacer click
+
     public function show(Producto $producto) {
         $otrosProductos = Producto::where('id', '!=', $producto->id)
             ->inRandomOrder()
@@ -81,7 +84,7 @@ class ProductoController extends Controller
     }
 
     /**
-     * Muestra el formulario para editar el producto especificado.
+     *
      *
      * @param  \App\Models\Producto  $producto
      * @return \Illuminate\View\View
@@ -97,6 +100,8 @@ class ProductoController extends Controller
      * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\RedirectResponse
      */
+
+    /**   Nuevos campos para la descripcion  */
     public function update(Request $request, Producto $producto) {
         // Validación para todos los campos, incluyendo los nuevos
         $request->validate([

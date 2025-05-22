@@ -141,7 +141,7 @@
 
 {{-- ESTE ES TU FOOTER ORIGINAL --}}
 <footer class="custom-footer">
-    <p>© {{ date('Y') }} ABC Corp. Todos los derechos reservados.</p>
+    <p>© 2024 ABC Corp. Todos los derechos reservados.</p>
 </footer>
 
 </body>
