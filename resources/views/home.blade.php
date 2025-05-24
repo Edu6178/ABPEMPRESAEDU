@@ -29,10 +29,7 @@
                 <li><a href="{{url('catalogo')}}" class="block py-2 px-4 rounded hover:bg-yellow-700 {{request()->routeIs('catalogo') ? 'active_custom' : ''}}"><i class="fas fa-warehouse mr-2"></i> Catálogo</a></li>
                 <li><a href="{{url('perfil')}}" class="block py-2 px-4 rounded hover:bg-yellow-700 {{request()->routeIs('catalogo') ? 'active_custom' : ''}}"><i class="fa-solid fa-user"></i> Perfil</a></li>
                 <li><a href="{{ route('ciudades.index') }}" class="block py-2 px-4 rounded hover:bg-yellow-700 {{ request()->routeIs('ciudades.*') ? 'active_custom' : '' }}"><i class="fas fa-city mr-2"></i> Ciudades</a></li>
-
                 
-                
-
                 <!-- Formulario de salirte (NO TOCAr) -->
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
@@ -49,49 +46,105 @@
         <div class="flex-1 p-8">
             <!-- Tarjetas de información -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                <!-- Tarjeta 1: Información sobre pedidos -->
-                <div class="bg-white  rounded-lg p-6">
-                    <h2 class="text-xl font-semibold text-gray-800">Pedidos Pendientes</h2>
-                    <p class="mt-2 text-gray-600">Revisa los pedidos que aún no han sido procesados.</p>
-                    <p class="mt-4 text-2xl font-bold text-blue-600">15 pedidos</p>
-                    <i class="fas fa-box text-blue-500 text-4xl mt-4"></i>
-                </div>
-
-                <!-- Tarjeta 2: Estado del Inventario -->
-                <div class="bg-white rounded-lg p-6">
-                    <h2 class="text-xl font-semibold text-gray-800">Compras Hechas</h2>
-                    <p class="mt-2 text-gray-600">2022 es tu año.</p>
-                    <p class="mt-4 text-2xl font-bold text-green-600">350 productos ordenados </p>
-                    <i class="fas fa-warehouse text-green-500 text-4xl mt-4"></i>
-                </div>
-
-                <!-- Tarjeta 3: Ventas recientes -->
-                <div class="bg-white  rounded-lg p-6">
-                    <h2 class="text-xl font-semibold text-gray-800">Presupuesto establecido por usted</h2>
-                    <p class="mt-2 text-gray-600">Presupuesto.</p>
-                    <p class="mt-4 text-2xl font-bold text-yellow-600">15,200 MXN</p>
-                    <i class="fas fa-shopping-cart text-yellow-500 text-4xl mt-4"></i>
-                </div>
-                
-
-<div class="card" style="width: 18rem;">
-<img src="{{ asset('img/cupon.png') }}" class="card-img-top " alt="...">
-<div class="card-body">
-    <h5 class="card-title">Felicidades!!</h5>
-    <p class="card-text">Por comprar varios productos en una sola noche se te a recompensado con un descuento del 20% en tus 2 siguientes compras en las siguientes 4 horas!!</p>
-    <a href="#" class="btn btn-primary">Reclamar cupon</a>
-    <p class="text-gray"> Esta sujeta a Condiciones  </p>
-</div>
-</div>
-            </div>
         </div>
 
+<!-- Barra de búsqueda y tarjeta de usuario -->
+<div class="w-full flex justify-center my-8">
+    <div class="w-full max-w-6xl flex items-center space-x-6">
+        
+        <!-- Formulario de búsqueda -->
+            <form action="{{ url('productos') }}" method="GET" class="flex-grow flex">
+                <input type="text" name="busqueda" value="{{ request('busqueda') }}" placeholder="Buscar producto"
+                class="flex-grow p-4 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500 shadow text-lg">
+                    <button type="submit"
+                        class="bg-yellow-500 text-white px-8 py-4 rounded-r-lg hover:bg-yellow-600 transition font-semibold text-lg">
+                    Buscar
+                </button>
+            </form>
+
+        <!-- Tarjeta de usuario -->
+            <div class="bg-white shadow rounded-lg p-4 flex items-center space-x-4 min-w-[250px]">
+                <div class="bg-yellow-500 text-white rounded-full h-12 w-12 flex items-center justify-center text-xl font-bold">
+                    {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                </div>
+                <div>
+                    <p class="text-gray-800 font-semibold">{{ Auth::user()->name }}</p>
+                    <p class="text-sm text-gray-500">{{ Auth::user()->email }}</p>
+                </div>
+            </div>
+    </div>
+</div>
+
+<!-- Sección de contenido interactivo -->
+<div class="w-full max-w-6xl mx-auto mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+    
+ <div class="bg-white rounded-lg p-6 shadow hover:shadow-md transition">
+        <h2 class="text-xl font-semibold text-gray-800">Pedidos Realizados</h2>
+        <p class="mt-2 text-gray-600">Consulta tus pedidos ya entregados o finalizados.</p>
+        <p class="mt-4 text-2xl font-bold text-green-600">27 pedidos</p>
+        <i class="fas fa-truck text-green-500 text-4xl mt-4"></i>
+    </div>
+
+    <!-- Pedidos Pendientes -->
+    <div class="bg-white rounded-lg p-6 shadow hover:shadow-md transition">
+        <h2 class="text-xl font-semibold text-gray-800"> Pedidos Pendientes</h2>
+        <p class="mt-2 text-gray-600">Revisa los pedidos que aún no han sido procesados.</p>
+        <p class="mt-4 text-2xl font-bold text-blue-600">15 pedidos</p>
+        <i class="fas fa-box text-blue-500 text-4xl mt-4"></i>
+    </div>
+</div>
+
+<!-- 3. Ofertas Interactivas (REUBICADAS ABAJO) -->
+<div class="w-full max-w-6xl mx-auto mt-10">
+    <div class="bg-yellow-100 rounded-lg p-6 hover:shadow-lg transition">
+        <h2 class="text-2xl font-semibold text-yellow-800">Ofertas Especiales</h2>
+        <p class="mt-2 text-yellow-700">Aprovecha descuentos exclusivos por tiempo limitado.</p>
+
+        <!-- Oferta destacada -->
+        <div class="mt-4 bg-white p-4 rounded shadow-md hover:bg-yellow-50 transition cursor-pointer">
+            <h3 class="text-lg font-bold text-gray-800">20% de descuento en tu próximo pedido</h3>
+            <p class="text-gray-600">Oferta disponible después de haber hecho 20 compras.</p>
+        </div>
+
+        <!-- Otra oferta -->
+        <div class="mt-4 bg-white p-4 rounded shadow-md hover:bg-yellow-50 transition cursor-pointer">
+            <h3 class="text-lg font-bold text-gray-800">2x1 en paquetes de lápices</h3>
+            <p class="text-gray-600">Oferta disponible en compras mayores a $50.</p>
+        </div>
+    </div>
+</div>
+
+<!-- 4. Cupón Promocional -->
+<div class="w-full max-w-6xl mx-auto mt-10 bg-white p-8 rounded-lg shadow-md flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8">
+    <!-- Imagen del cupón -->
+    <div class="w-full md:w-1/3">
+        <img src="{{ asset('img/cupon.png') }}" alt="Cupón Descuento" class="rounded-lg w-full object-cover">
+    </div>
+
+    <!-- Texto e información -->
+    <div class="w-full md:w-2/3">
+        <h2 class="text-2xl font-bold text-gray-800 mb-2"> ¡Felicidades!</h2>
+        <p class="text-gray-700 mb-4">
+            Por comprar varios productos en una sola noche, se te ha recompensado con un <strong>descuento del 20%</strong> en tus 2 siguientes compras durante las próximas 4 horas.
+        </p>
+        <a href="#" class="inline-block bg-yellow-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition">
+            Reclamar cupón
+        </a>
+        <p class="text-sm text-gray-500 mt-2">* Esta promoción está sujeta a condiciones.</p>
+    </div>
+</div>
+
+    
     </div> <!---el final de la caja-->
 
     <footer class="custom-footer">
     <p>© 2024 ABC Corp. Todos los derechos reservados.</p>
 </footer>
+
 </body>
+
+<!-- CDN de Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </html>
 @endsection
