@@ -24,21 +24,22 @@
 
 <div class="min-h-screen flex"> {{-- Ajusta pt-16 según la altura de tu franja superior --}}
 
-    <div class="w-80 bg-yellow-500 text-white p-10 space-y-6 flex flex-col">
+    <!-- Barra lateral (Sidebar) -->
+    <div class="w-80 bg-yellow-500 text-white p-10 space-y-6 flex flex-col min-h-screen">
         <h1 class="text-2xl font-bold text-center">Distribuidora ABC</h1>
         <ul class="space-y-4">
-            <li><a href="{{ url('dashboard') }}" class="flex items-center block py-2 px-4 rounded hover:bg-yellow-700 {{ request()->routeIs('home') ? 'active_custom' : '' }}"><i class="fa-solid fa-house-user mr-3 w-5 text-center"></i> Inicio</a></li>
-            <li><a href="{{ url('productos') }}" class="flex items-center block py-2 px-4 rounded hover:bg-yellow-700 {{ request()->routeIs('productos*') ? 'active_custom' : '' }}"><i class="fa-solid fa-cart-shopping mr-3 w-5 text-center"></i> Productos</a></li>
-            <li><a href="{{ url('pedidos') }}" class="flex items-center block py-2 px-4 rounded hover:bg-yellow-700 {{ request()->routeIs('pedidos') ? 'active_custom' : '' }}"><i class="fa-solid fa-box mr-3 w-5 text-center"></i> Pedidos</a></li>
-            <li><a href="{{ url('catalogo') }}" class="flex items-center block py-2 px-4 rounded hover:bg-yellow-700 {{ request()->routeIs('catalogo') ? 'active_custom' : '' }}"><i class="fa-solid fa-warehouse mr-3 w-5 text-center"></i> Catálogo</a></li>
-            <li><a href="{{ url('perfil') }}" class="flex items-center block py-2 px-4 rounded hover:bg-yellow-700 {{ request()->routeIs('perfil') ? 'active_custom' : '' }}"><i class="fa-solid fa-user mr-3 w-5 text-center"></i> Perfil</a></li>
-            <li><a href="{{ route('ciudades.index') }}" class="flex items-center block py-2 px-4 rounded hover:bg-yellow-700 {{ request()->routeIs('ciudades.*') ? 'active_custom' : '' }}"><i class="fa-solid fa-city mr-3 w-5 text-center"></i> Ciudades</a></li>
-            <li><a href="{{ route('empleados.index') }}" class="flex items-center block py-2 px-4 rounded hover:bg-yellow-700 {{ request()->routeIs('empleados.*') ? 'active_custom' : '' }}"><i class="fa-solid fa-users mr-3 w-5 text-center"></i> Empleados</a></li>
+            <li><a href="{{ url('dashboard') }}" class="block py-2 px-4 rounded hover:bg-yellow-700 {{ request()->routeIs('home') ? 'active_custom' : '' }}"><i class="fa-solid fa-house-user"></i> Inicio</a></li>
+            <li><a href="{{ url('productos') }}" class="block py-2 px-4 rounded hover:bg-yellow-700 {{ request()->routeIs('productos') ? 'active_custom' : '' }}"><i class="fa-solid fa-cart-shopping"></i> Productos</a></li>
+            <li><a href="{{ url('pedidos') }}" class="block py-2 px-4 rounded hover:bg-yellow-700 {{ request()->routeIs('pedidos') ? 'active_custom' : '' }}"><i class="fas fa-box mr-2"></i> Pedidos</a></li>
+            <li><a href="{{ url('catalogo') }}" class="block py-2 px-4 rounded hover:bg-yellow-700 {{ request()->routeIs('catalogo') ? 'active_custom' : '' }}"><i class="fas fa-warehouse mr-2"></i> Catálogo</a></li>
+            <li><a href="{{ url('perfil') }}" class="block py-2 px-4 rounded hover:bg-yellow-700 {{ request()->routeIs('perfil') ? 'active_custom' : '' }}"><i class="fa-solid fa-user"></i> Perfil</a></li>
+            <li><a href="{{ route('ciudades.index') }}" class="block py-2 px-4 rounded hover:bg-yellow-700 {{ request()->routeIs('ciudades.*') ? 'active_custom' : '' }}"><i class="fas fa-city mr-2"></i> Ciudades</a></li>
+            <li><a href="{{ url('empleados') }}" class="block py-2 px-4 rounded hover:bg-yellow-700 {{ request()->is('empleados*') ? 'active_custom' : '' }}"> <i class="fas fa-users mr-2"></i> Empleados</a></li>
             <li>
-                <form method="POST" action="{{ route('logout') }}" class="w-full">
+                <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="w-full text-left flex items-center block py-2 px-4 rounded bg-red-600 hover:bg-red-800 text-white">
-                        <i class="fa-solid fa-sign-out-alt mr-3 w-5 text-center"></i> Logout
+                    <button type="submit" class="block py-2 px-4 rounded bg-red-600 hover:bg-red-800 text-white">
+                        <i class="fas fa-sign-out-alt mr-2"></i> Logout
                     </button>
                 </form>
             </li>
