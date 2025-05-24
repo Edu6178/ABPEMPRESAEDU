@@ -8,31 +8,18 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductoController extends Controller
 {
-    /**
-     * Muestra una lista de los productos.
-     *
-     * @return \Illuminate\View\View
-     */
+
     public function index() {
         $productos = Producto::all();
         return view('productos.index', compact('productos'));
     }
 
-    /**
-     * Muestra el formulario para crear un nuevo producto.
-     *
-     * @return \Illuminate\View\View
-     */
+
     public function create() {
         return view('productos.create');
     }
 
-    /**
-     * Almacena un producto recién creado en la base de datos.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
+
     public function store(Request $request) {
         // Validación para todos los campos, incluyendo los nuevos
         $request->validate([
@@ -66,12 +53,6 @@ class ProductoController extends Controller
         return redirect()->route('productos.index')->with('success', 'Producto creado exitosamente con todos sus detalles.');
     }
 
-    /**
-     * Muestra el producto especificado.
-     *
-     * @param  \App\Models\Producto  $producto
-     * @return \Illuminate\View\View
-     */
 
    // mostrar la descripcion de los productos al hacer click
 
@@ -83,25 +64,14 @@ class ProductoController extends Controller
         return view('productos.show', compact('producto', 'otrosProductos'));
     }
 
-    /**
-     *
-     *
-     * @param  \App\Models\Producto  $producto
-     * @return \Illuminate\View\View
-     */
+
     public function edit(Producto $producto) {
         return view('productos.edit', compact('producto'));
     }
 
-    /**
-     * Actualiza el producto especificado en la base de datos.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Producto  $producto
-     * @return \Illuminate\Http\RedirectResponse
-     */
 
-    /**   Nuevos campos para la descripcion  */
+
+
     public function update(Request $request, Producto $producto) {
         // Validación para todos los campos, incluyendo los nuevos
         $request->validate([
@@ -139,12 +109,7 @@ class ProductoController extends Controller
         return redirect()->route('productos.index')->with('success', 'Producto actualizado exitosamente con todos sus detalles.');
     }
 
-    /**
-     * Elimina el producto especificado de la base de datos.
-     *
-     * @param  \App\Models\Producto  $producto
-     * @return \Illuminate\Http\RedirectResponse
-     */
+
     public function destroy(Producto $producto) {
         if ($producto->imagen) {
             Storage::disk('public')->delete($producto->imagen);
