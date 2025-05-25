@@ -1,172 +1,99 @@
-
 @extends('layouts.app')
 
 @section('content')
-<body class="bg-gray-200 tailwind-bg">
+<body class="bg-gray-100">
 
-<link href="{{ mix('css/app.css') }}" rel="stylesheet">
-
-<div class="text-bg-warning p-3 pt-4 w-100 position-absolute top-0 start-0"></div>
-
-<nav class="navbar bg-body-tertiary">
-    <div class="container-fluid">
-        <ul class="nav nav-pills nav-fill align-items-center">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a>
-            </li>
-            <li class="nav-item dropdown ms-3">
-                <a class="nav-link dropdown-toggle custom-yellow" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
-                    Categorías
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Plumas</a></li>
-                    <li><a class="dropdown-item" href="#">Libretas</a></li>
-                    <li><a class="dropdown-item" href="#">Lápices</a></li>
-                    <li><a class="dropdown-item" href="#">Mochilas</a></li>
-                    <li><a class="dropdown-item" href="#">Pegamentos</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">No hay más opciones</a></li>
+<!-- Navbar -->
+<nav class="bg-yellow-500 px-6 py-4 shadow-md">
+    <div class="flex justify-between items-center">
+        <div class="text-white text-xl font-bold">Distribuidora ABC</div>
+        <ul class="flex space-x-4">
+            <li><a href="{{ route('register') }}" class="text-white font-medium hover:underline">Registrarse</a></li>
+            <li><a href="{{ route('login') }}" class="text-white font-medium hover:underline">Iniciar Sesión</a></li>
+            <li class="relative group">
+                <button class="text-white font-medium">Categorías ▾</button>
+                <ul class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow-lg">
+                    <li><a href="#" class="block px-4 py-2 hover:bg-yellow-100">Plumas</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-yellow-100">Libretas</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-yellow-100">Lápices</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-yellow-100">Mochilas</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-yellow-100">Pegamentos</a></li>
                 </ul>
             </li>
         </ul>
     </div>
 </nav>
 
-<!-- SLIDER DE IMÁGENES -->
-<div id="carouselExample" class="carousel slide mt-4 container" data-bs-ride="carousel">
-    <div class="carousel-inner text-center" style="max-width: 900px; max-height: 450px; margin: auto;">
-        <div class="carousel-item active">
-            <img src="{{ asset('img/p_pluma.jpg') }}" class="d-block w-100" style="max-height: 450px; object-fit: contain;" alt="Plumas">
-        </div>
-        <div class="carousel-item">
-            <img src="{{ asset('img/PapelMultiusos.jpg') }}" class="d-block w-100" style="max-height: 450px; object-fit: contain;" alt="Papel Multiusos">
-        </div>
-        <div class="carousel-item">
-            <img src="{{ asset('img/p_lapices.jpg') }}" class="d-block w-100" style="max-height: 450px; object-fit: contain;" alt="Lápices">
-        </div>
-        <div class="carousel-item">
-            <img src="{{ asset('img/p_libreta.jpg') }}" class="d-block w-100" style="max-height: 450px; object-fit: contain;" alt="Libreta">
+<!-- Slider -->
+<div class="container mx-auto mt-6">
+    <div class="relative w-full max-w-4xl mx-auto overflow-hidden rounded-lg shadow-lg">
+        <div class="carousel">
+            <div class="carousel-item active"><img src="{{ asset('img/p_pluma.jpg') }}" class="w-full object-cover h-72"></div>
+            <div class="carousel-item"><img src="{{ asset('img/PapelMultiusos.jpg') }}" class="w-full object-cover h-72"></div>
+            <div class="carousel-item"><img src="{{ asset('img/p_lapices.jpg') }}" class="w-full object-cover h-72"></div>
+            <div class="carousel-item"><img src="{{ asset('img/p_libreta.jpg') }}" class="w-full object-cover h-72"></div>
         </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Anterior</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Siguiente</span>
-    </button>
 </div>
 
-
-
-    <form class="d-flex" role="search">
-    <input class="form-control me-1" type="Buscar" placeholder="Buscar" aria-label="Buscar">
+<!-- Buscador -->
+<form class="d-flex" action="{{ route('buscar') }}" method="GET" role="search">
+    <input class="form-control me-1" type="search" name="query" placeholder="Buscar" aria-label="Buscar">
     <button class="btn btn-outline-success" type="submit">Buscar productos</button>
-    </form>
-</div>
-</nav>
-
-<div class="text-bg-warning p-3"></div>
+</form>
 
 
-
-
-<div class="card custom-card">
-<div class="card-header custom-header">
-</div>
-<div class="card-body">
-    <h5 class="card-title custom-title"><i class="fa-solid fa-bell"></i> Recordatorio</h5>
-    <p class="card-text">Puedes conseguir nuestra aplicación en la Play Store en el siguiente enlace</p>
-    
-    <a href="#" class="btn custom-btn"><i class="fa-brands fa-android"></i></a>
-    <a href="#" class="btn custom-btn"><i class="fa-brands fa-apple"></i></a>
-</div>
+<!-- Mensaje Bienvenida -->
+<div class="text-center mt-10">
+    <img src="{{ asset('img/LOGO_Empresa.png') }}" class="mx-auto w-72 mb-4" alt="Logo Empresa">
+    <h1 class="text-4xl font-bold text-blue-700">Bienvenido a Distribuidora ABC</h1>
+    <p class="text-gray-700 mt-2">Líder en distribución de artículos escolares y de oficina.</p>
 </div>
 
-
-
-<div class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-    <div class="text-center">
-    <img src="{{ asset('img/LOGO_Empresa.png') }}" class=" mx-auto d-block w-10 " style="width: 30rem; min-height: 30rem;" alt="..." >
-        <h1 class="text-5xl font-bold text-blue-600">Bienvenido a Distribuidora ABC</h1>
-        <p class="text-lg text-gray-700 mt-4">Líder en distribución y abastecimiento de productos de calidad.</p>
-        <p class="text-md text-gray-600 mt-2">Optimiza tu gestión con nuestra plataforma digital.</p>
-        
+<!-- Recordatorio -->
+<div class="mt-10 text-center">
+    <div class="bg-white p-6 rounded shadow-md inline-block">
+        <h3 class="text-xl font-semibold text-yellow-600 mb-2"><i class="fa-solid fa-bell"></i> Recordatorio</h3>
+        <p class="text-gray-700">Descarga nuestra app desde:</p>
+        <div class="flex justify-center gap-4 mt-4">
+            <a href="#" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded"><i class="fa-brands fa-android"></i> Android</a>
+            <a href="#" class="bg-black hover:bg-gray-800 text-white px-4 py-2 rounded"><i class="fa-brands fa-apple"></i> iOS</a>
+        </div>
     </div>
 </div>
 
-<div class="text-bg-warning p-3"></div>
-
-<!----- inicio --->
-
-
-<!---- seperador --->
-
-<div class="row">
-    <div class="col col-6 border-end border-4 border-warning p-4">
-
-    
-
-    <div class="row">
-    <h3> Productos </h3>
-
-    <div class="col-6 pt-3">
-    <p> Plumas Bic Negro Azul Rojo y Verde <p>
-    <img src="{{ asset('img/p_pluma.jpg') }}" class=" mx-auto d-block w-5 " style="width: 20rem; min-height: 20rem;" alt="..." >
-    </div>
-    <div class="col-6 pt-3">
-    <p> PapelMultiusos<p>
-    <img src="{{ asset('img/PapelMultiusos.jpg') }}" class=" mx-auto d-block w-5 " style="width: 20rem; min-height: 20rem;" alt="..." >
-
-</div>
-    <div class="col-6 pt-3">
-    <p> Lapices<p>
-    <img src="{{ asset('img/p_lapices.jpg') }}" class=" mx-auto d-block w-5 " style="width: 20rem; min-height: 20rem;" alt="..." >
-
-</div>
-    <div class="col-6 pt-3"><p>Libretas pasta francesa</p>
-    <img src="{{ asset('img/p_libreta.jpg') }}" class=" mx-auto d-block w-5 " style="width: 20rem; min-height: 20rem;" alt="..." >
-</div>
-
-</div>
-
-
-
-</div>
-<div class="col col-6 border-end border-4 border-warning p-4">
-
-<div class="row">
-    <h3> Afiliados </h3>
-
-    <div class="col-6 pt-3">
-    <img src="{{ asset('img/LOGONORMA.png') }}" class=" mx-auto d-block w-5 " style="width: 20rem; min-height: 20rem;" alt="..." >
+<!-- Secciones: Productos y Afiliados -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 container mx-auto px-4">
+    <!-- Productos -->
+    <div>
+        <h3 class="text-2xl font-bold text-yellow-600 mb-4">Productos</h3>
+        <div class="grid grid-cols-2 gap-4">
+            @foreach ([
+                ['img' => 'p_pluma.jpg', 'desc' => 'Plumas Bic Negro Azul Rojo y Verde'],
+                ['img' => 'PapelMultiusos.jpg', 'desc' => 'Papel Multiusos'],
+                ['img' => 'p_lapices.jpg', 'desc' => 'Lápices'],
+                ['img' => 'p_libreta.jpg', 'desc' => 'Libretas pasta francesa'],
+            ] as $producto)
+                <div class="bg-white p-4 rounded shadow">
+                    <img src="{{ asset('img/' . $producto['img']) }}" class="w-full h-40 object-contain mb-2" alt="">
+                    <p class="text-center text-gray-700">{{ $producto['desc'] }}</p>
+                </div>
+            @endforeach
+        </div>
     </div>
 
-    <div class="col-6 pt-3">
-    <img src="{{ asset('img/MAPED.jpg') }}" class=" mx-auto d-block w-5 " style="width: 20rem; min-height: 20rem;" alt="..." >
-</div>
-    <div class="col-6 pt-3">
-    <img src="{{ asset('img/Logo-Bic.png') }}" class=" mx-auto d-block w-5 " style="width: 20rem; min-height: 20rem;" alt="..." >
-</div>
-    <div class="col-6 pt-3">
-    <img src="{{ asset('img/Crayola-Logo-1997.png') }}" class=" mx-auto d-block w-5 " style="width: 20rem; min-height: 20rem;" alt="..." >
-</div>
-
-</div>
-
-<div class="row">
-
+    <!-- Afiliados -->
+    <div>
+        <h3 class="text-2xl font-bold text-yellow-600 mb-4">Afiliados</h3>
+        <div class="grid grid-cols-2 gap-4">
+            @foreach (['LOGONORMA.png', 'MAPED.jpg', 'Logo-Bic.png', 'Crayola-Logo-1997.png'] as $logo)
+                <div class="bg-white p-4 rounded shadow flex items-center justify-center">
+                    <img src="{{ asset('img/' . $logo) }}" class="h-20 object-contain" alt="Afiliado">
+                </div>
+            @endforeach
+        </div>
+    </div>
 </div>
 
-
-
-
-
-
-
-
+</body>
 @endsection

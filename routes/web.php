@@ -86,3 +86,6 @@ Route::get('/', function () {
     return view('bienvenido');
 })->name('bienvenido');
 
+use App\Http\Controllers\BusquedaController;
+
+Route::get('/buscar', [BusquedaController::class, 'buscar'])->name('buscar');

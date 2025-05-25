@@ -1,6 +1,3 @@
-@extends('layouts.auth')
-
-@section('content')
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -35,9 +32,9 @@
                 <li><a href="#" class="block py-2 px-4 rounded hover:bg-yellow-700"><i class="fa-solid fa-gear"></i> Configuración</a></li>
                 
                 <li>
-                    <form method="POST" action="{{ route('logout') }}">
+                    <form method="POST" action="{{ route('Salir') }}">
                         @csrf
-                        <button type="submit" class="block py-2 px-4 rounded bg-red-600 hover:bg-red-800 text-white">
+                        <button type="submit" class="block py-2 px-4 rounded bg-red-600 hover:bg-red-800 text-black">
                             <i class="fas fa-sign-out-alt mr-2"></i> Logout
                         </button>
                     </form>
@@ -54,4 +51,3 @@
 
 </body>
 </html>
-@endsection

@@ -7,38 +7,23 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Distribuidora ABC') }}</title>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Fuente Nunito -->
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <!-- Scripts -->
+    <!-- Archivos compilados (si usas Vite/Laravel Mix) -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
-<body>
-    
-                        @guest
-                            @if (Route::has('login'))
-
-                            @endif
-
-                            @if (Route::has('register'))
-
-                            @endif
-                        @else
-                        
-
-                                    
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
+<body class="bg-gray-100 text-gray-800">
+    <div id="app">
+        {{-- Puedes agregar un nav fijo aquí si deseas que todas las páginas lo tengan --}}
 
         <main class="py-4">
             @yield('content')
