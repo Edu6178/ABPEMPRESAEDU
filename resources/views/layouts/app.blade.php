@@ -22,25 +22,61 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <style>
-        /* Modo oscuro personalizado */
-        .dark-mode {
-            background-color: #121212 !important;
-            color: #f0f0f0 !important;
-        }
+    /* Modo oscuro personalizado */
+    .dark-mode {
+        background-color: #121212 !important;
+        color: #f0f0f0 !important;
+    }
 
-        .dark-mode .bg-white {
-            background-color: #1e1e1e !important;
-        }
+    .dark-mode .bg-white {
+        background-color: #1e1e1e !important;
+    }
 
-        .dark-mode .text-gray-800 {
-            color: #f0f0f0 !important;
-        }
+    .dark-mode .text-gray-800,
+    .dark-mode .text-black {
+        color: #f0f0f0 !important;
+    }
 
-        .dark-mode .custom-footer {
-            background-color: #222;
-            color: #ccc;
-        }
-    </style>
+    .dark-mode .text-gray-700 {
+        color: #ccc !important;
+    }
+
+    .dark-mode .table,
+    .dark-mode table {
+        background-color: #1e1e1e !important;
+        color: #f0f0f0 !important;
+    }
+
+    .dark-mode th,
+    .dark-mode td {
+        background-color: #2a2a2a !important;
+        color: #f0f0f0 !important;
+        border-color: #444 !important;
+    }
+
+    .dark-mode .btn,
+    .dark-mode button {
+        color: #f0f0f0 !important;
+    }
+
+    .dark-mode .custom-footer {
+        background-color: #222 !important;
+        color: #ccc !important;
+    }
+
+    .dark-mode a {
+        color: #4fc3f7 !important;
+    }
+
+    .dark-mode .bg-gray-100 {
+        background-color: #1e1e1e !important;
+    }
+
+    .dark-mode .shadow {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1) !important;
+    }
+</style>
+
 </head>
 <body id="main-body" class="bg-gray-100 text-gray-800">
     <div id="app">
