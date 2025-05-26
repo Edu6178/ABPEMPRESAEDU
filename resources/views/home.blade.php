@@ -39,7 +39,7 @@
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                         <button type="submit" class="w-full flex items-center gap-2 py-2 px-4 rounded bg-green-500 hover:bg-green-600 text-black font-semibold transition duration-200">
+                         <button type="submit" class="w-full flex items-center gap-2 py-2 px-4 rounded bg-red-500 hover:bg-red-600 text-black font-semibold transition duration-200">
                             <i class="fas fa-sign-out-alt mr-2"></i> Salir
                         </button>
                     </form>
