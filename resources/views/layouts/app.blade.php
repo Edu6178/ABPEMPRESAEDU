@@ -18,16 +18,60 @@
     <!-- Fuente Nunito -->
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <!-- Archivos compilados (si usas Vite/Laravel Mix) -->
+    <!-- Archivos compilados -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <style>
+        /* Modo oscuro personalizado */
+        .dark-mode {
+            background-color: #121212 !important;
+            color: #f0f0f0 !important;
+        }
+
+        .dark-mode .bg-white {
+            background-color: #1e1e1e !important;
+        }
+
+        .dark-mode .text-gray-800 {
+            color: #f0f0f0 !important;
+        }
+
+        .dark-mode .custom-footer {
+            background-color: #222;
+            color: #ccc;
+        }
+    </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body id="main-body" class="bg-gray-100 text-gray-800">
     <div id="app">
-        {{-- Puedes agregar un nav fijo aquí si deseas que todas las páginas lo tengan --}}
+        <!-- Botón de modo oscuro (puedes moverlo a un nav si lo deseas) -->
+        <button onclick="toggleDarkMode()"
+            class="fixed top-4 right-4 bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded shadow z-50">
+            🌙 Modo Oscuro
+        </button>
 
         <main class="py-4">
             @yield('content')
         </main>
     </div>
+
+    <script>
+        function toggleDarkMode() {
+            const body = document.getElementById('main-body');
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('modoOscuro', 'activado');
+            } else {
+                localStorage.setItem('modoOscuro', 'desactivado');
+            }
+        }
+
+        // Activar modo oscuro automáticamente si estaba activado
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('modoOscuro') === 'activado') {
+                document.getElementById('main-body').classList.add('dark-mode');
+            }
+        });
+    </script>
 </body>
 </html>
